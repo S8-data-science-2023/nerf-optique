@@ -1,0 +1,23 @@
+
+16-03-2023 Dimitri 
+result: 
+  - notebook with modified resnet + upsampling + knn 
+(and optional pca which does not seem to matter at all).
+  - used only first layer of pretrained resnet101
+    to get change in image size as (x, y, 3) -> (x/4, y/4, 256),
+    bicubic upsampling from torch.nn.Upsample
+  - results for knn with 2 clusters look pretty decent,
+    not so good for 5 clusters, but still make sense
+    (judging from the image only, no other metrics used)
+  - see notebook Dimitri/notebooks/attempt_13_03.ipynb
+
+todo:
+  - build a proper pipeline 
+    (load data,  easily choose between blocks (models)
+    for encoder / upsampling / clustering / evaluation metric)
+    to test different hypoteses quicky
+    (example: change upsampling algorithm: knn / bilinear / transConv,
+    run on the whole dataset, compare metrics, choose best)
+
+   - with a good pipeline try other clustering algorithms, change number 
+     of used resnet layers, maybe use a bit of supervised learning
